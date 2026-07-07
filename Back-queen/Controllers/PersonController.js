@@ -44,6 +44,7 @@ const getPareja = async (req, res) => {
   const { id, pareja_id } = req.user
 
   try {
+    // Primero trae la otra persona
     const { data: pareja, error } = await supabase
       .from('person')
       .select('id, username, mood_id, fecha_nacimiento')
@@ -55,7 +56,17 @@ const getPareja = async (req, res) => {
       return res.status(404).json({ error: 'Pareja no encontrada' })
     }
 
-    return res.status(200).json(pareja)
+    // Luego trae fecha_relacion de la tabla parejas por separado
+    const { data: parejaDatos, error: errorPareja } = await supabase
+      .from('parejas')
+      .select('fecha_relacion')
+      .eq('id', pareja_id)
+      .single()
+
+    return res.status(200).json({
+      ...pareja,
+      fecha_relacion: parejaDatos?.fecha_relacion || null,
+    })
 
   } catch (err) {
     console.error('Error en getPareja:', err)
