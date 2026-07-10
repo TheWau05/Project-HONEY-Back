@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
 const authRoutes = require('./Routes/AuthRoutes')
@@ -11,6 +12,24 @@ const bucketRoutes = require('./Routes/BucketRoutes')
 const eventosRoutes = require('./Routes/EventosRoutes')
 const stickyRoutes = require('./Routes/StickyRoutes')
 const moodroutes = require('./Routes/MoodRoutes')
+
+const allowedOrigins = [
+  'http://localhost:5173',        // desarrollo local
+  'http://192.168.1.33:5173',     // tu IP local
+  'https://tu-app.vercel.app',    // TODO: agrega tu dominio de Vercel cuando lo tengas
+]
+
+app.use(cors({
+  origin: (origin, callback) => {
+    // Permite requests sin origin (Postman, mobile)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true)
+    } else {
+      callback(new Error('No permitido por CORS'))
+    }
+  },
+  credentials: true,
+}))
 
 app.use(express.json())
 
