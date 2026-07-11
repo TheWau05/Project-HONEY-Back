@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const { getStickyNotes, upsertStickyNote } = require('../Controllers/StickyController')
-const { verifyToken } = require('../Middleware/auth')
+const { verifyToken } = require('../Middleware/Auth')
 
 const router = Router()
 

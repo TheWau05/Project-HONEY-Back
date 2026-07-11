@@ -1,6 +1,6 @@
 const { Router } = require('express')
 const { getBucket, createItem, updateItem, deleteItem } = require('../Controllers/BucketController')
-const { verifyToken } = require('../Middleware/auth')
+const { verifyToken } = require('../Middleware/Auth')
 
 const router = Router()
 
