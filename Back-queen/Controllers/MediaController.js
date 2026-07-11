@@ -38,7 +38,7 @@ const uploadMedia = async (req, res) => {
 
       const { error: errorUpload } = await supabase
         .storage
-        .from('media')
+        .from('Post_Media')
         .upload(nombreArchivo, file.buffer, {
           contentType: file.mimetype,
           upsert: false,
@@ -51,7 +51,7 @@ const uploadMedia = async (req, res) => {
 
       const { data: urlData } = supabase
         .storage
-        .from('media')
+        .from('Post_Media')
         .getPublicUrl(nombreArchivo)
 
       registros.push({
@@ -72,7 +72,7 @@ const uploadMedia = async (req, res) => {
 
     // 👇 esto es lo que faltaba: persistir en la BD
     const { data: mediaGuardada, error: errorInsert } = await supabase
-      .from('post_media')
+      .from('Post_Media')
       .insert(registros)
       .select()
 

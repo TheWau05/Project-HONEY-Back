@@ -10,7 +10,7 @@ const getPosts = async (req, res) => {
       .select(`
         *,
         person:creado_por_id (id, username, mood_id),
-        post_media (id, url, tipo, nombre_original, orden)
+        Post_Media (id, url, tipo, nombre_original, orden)
       `)
       .eq('pareja_id', pareja_id)
       .order('created_at', { ascending: false })
@@ -38,7 +38,7 @@ const getPostById = async (req, res) => {
       .select(`
         *,
         person:creado_por_id (id, username, mood_id),
-        post_media (id, url, tipo, nombre_original, orden)
+        Post_Media (id, url, tipo, nombre_original, orden)
       `)
       .eq('id', id)
       .eq('pareja_id', pareja_id) // seguridad: solo posts de su pareja

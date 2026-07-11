@@ -79,6 +79,7 @@ const updateMood = async (req, res) => {
   const { id } = req.user
   const { mood_id } = req.body
 
+
   if (!mood_id) {
     return res.status(400).json({ error: 'mood_id es requerido' })
   }

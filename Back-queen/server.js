@@ -39,7 +39,7 @@ app.use('/api/posts', postsRoutes)
 app.use('/api/wishlist', wishlistRoutes)
 app.use('/api/bucket', bucketRoutes)
 app.use('/api/eventos', eventosRoutes)
-app.use('/api/sticky', stickyRoutes)
+app.use('/api/stickynote', stickyRoutes)
 app.use('/api/moods', moodroutes)
 
 
