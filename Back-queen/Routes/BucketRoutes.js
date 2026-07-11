@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { getBucket, createItem, updateItem, deleteItem } = require('../Controllers/bucketController')
+const { getBucket, createItem, updateItem, deleteItem } = require('../Controllers/BucketController')
 const { verifyToken } = require('../Middleware/auth')
 
 const router = Router()
