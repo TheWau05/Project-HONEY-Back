@@ -16,7 +16,7 @@ const moodroutes = require('./Routes/MoodRoutes')
 const allowedOrigins = [
   'http://localhost:5173',        // desarrollo local
   'http://192.168.1.33:5173',     // tu IP local
-  'https://tu-app.vercel.app',    // TODO: agrega tu dominio de Vercel cuando lo tengas
+  'https://project-honey-back.vercel.app/',    // TODO: agrega tu dominio de Vercel cuando lo tengas
 ]
 
 app.use(cors({
