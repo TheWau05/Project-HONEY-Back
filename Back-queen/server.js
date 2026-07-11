@@ -32,7 +32,12 @@ app.use(cors({
 }))
 
 app.use(express.json())
-
+app.get('/', (req, res) => {
+  res.json({
+    status: 'OK',
+    message: 'Project Honey API funcionando 🚀'
+  })
+})
 app.use('/api/auth', authRoutes)
 app.use('/api/person', personRoutes)
 app.use('/api/posts', postsRoutes)
@@ -44,6 +49,10 @@ app.use('/api/moods', moodroutes)
 
 
 
-app.listen(3000, () => {
-  console.log('🚀 Servidor iniciado en puerto 3000')
-})
+if (require.main === module) {
+  app.listen(3000, () => {
+    console.log('🚀 Servidor iniciado en puerto 3000')
+  })
+}
+
+module.exports = app
